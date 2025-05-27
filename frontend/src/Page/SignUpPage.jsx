@@ -20,8 +20,8 @@ import { useAuthStore } from "../store/useAuthStore";
 
 const SignUpSchema = z.object({
   email:z.string().email("Enter a valid email"),
-  password:z.string().min(6 , "Password must be atleast of 6 characters"),
-  name:z.string().min(3 , "Name must be atleast 3 character")
+  password:z.string().min(6 , "Password must be at least of 6 characters"),
+  name:z.string().min(3 , "Name must be at least 3 character")
 })
 
 const SignUpPage = () => {
@@ -41,19 +41,11 @@ const navigate = useNavigate();
     resolver:zodResolver(SignUpSchema)
   })
 
-  // const onSubmit = async (data)=>{
-  //  try {
-  //   await signup(data)
-  //   console.log("signup data" , data)
-  //  } catch (error) {
-  //    console.error("SignUp failed:", error);
-  //  }
-  // }
 
   const onSubmit = async (data) => {
   try {
     await signup(data);
-    navigate("/"); // ✅ Redirect to homepage
+    navigate("/"); 
   } catch (error) {
     console.error("SignUp failed:", error);
   }

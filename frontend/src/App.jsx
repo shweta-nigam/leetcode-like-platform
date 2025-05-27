@@ -2,15 +2,15 @@ import React, { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
-import HomePage from "./page/HomePage";
-import LoginPage from "./page/LoginPage";
-import SignUpPage from "./page/SignUpPage";
+import HomePage from "./Page/HomePage";
+import LoginPage from "./Page/LoginPage";
+import SignUpPage from "./Page/SignUpPage";
 import { useAuthStore } from "./store/useAuthStore";
 import { Loader } from "lucide-react";
 import Layout from "./layout/Layout";
 import AdminRoute from "./components/AdminRoute";
-import AddProblem from "./page/AddProblem";
-import ProblemPage from "./page/ProblemPage";
+import AddProblem from "./Page/AddProblem";
+import ProblemPage from "./Page/ProblemPage";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
