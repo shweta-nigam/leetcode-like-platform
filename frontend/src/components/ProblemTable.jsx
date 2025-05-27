@@ -1,63 +1,88 @@
 import React, { useState, useMemo } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { Link } from "react-router-dom";
-
 import { Bookmark, PencilIcon, Trash, TrashIcon, Plus } from "lucide-react";
+import { useActions } from "../store/useAction";
+import AddToPlaylistModal from "./AddToPlaylist";
+import CreatePlaylistModal from "./CreatePlaylistModal";
+import { usePlaylistStore } from "../store/usePlaylistStore";
 
-const ProblemTable = ({ problems }) => {
+
+const ProblemsTable = ({ problems }) => {
   const { authUser } = useAuthStore();
-
+  const { onDeleteProblem } = useActions();
+  const { createPlaylist } = usePlaylistStore();
   const [search, setSearch] = useState("");
   const [difficulty, setDifficulty] = useState("ALL");
   const [selectedTag, setSelectedTag] = useState("ALL");
   const [currentPage, setCurrentPage] = useState(1);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isAddToPlaylistModalOpen, setIsAddToPlaylistModalOpen] = useState(false);
+  const [selectedProblemId, setSelectedProblemId] = useState(null);
 
+  // Extract all unique tags from problems
   const allTags = useMemo(() => {
     if (!Array.isArray(problems)) return [];
-
     const tagsSet = new Set();
-
     problems.forEach((p) => p.tags?.forEach((t) => tagsSet.add(t)));
-
     return Array.from(tagsSet);
   }, [problems]);
 
+  // Define allowed difficulties
+  const difficulties = ["EASY", "MEDIUM", "HARD"];
 
-  const filteredProblems = useMemo(()=>{
+  // Filter problems based on search, difficulty, and tags
+  const filteredProblems = useMemo(() => {
     return (problems || [])
-    .filter((problem)=> problem.title.toLowerCase().includes(search.toLowerCase()))
-    .filter((problem)=>difficulty === "ALL" ? true: problem.difficulty === difficulty)
-     .filter((problem) =>
+      .filter((problem) =>
+        problem.title.toLowerCase().includes(search.toLowerCase())
+      )
+      .filter((problem) =>
+        difficulty === "ALL" ? true : problem.difficulty === difficulty
+      )
+      .filter((problem) =>
         selectedTag === "ALL" ? true : problem.tags?.includes(selectedTag)
       );
-  },[problems , search , difficulty , selectedTag])
+  }, [problems, search, difficulty, selectedTag]);
 
+  // Pagination logic
   const itemsPerPage = 5;
   const totalPages = Math.ceil(filteredProblems.length / itemsPerPage);
   const paginatedProblems = useMemo(() => {
     return filteredProblems.slice(
-      (currentPage - 1) * itemsPerPage, // 1 * 5 = 5 ( starting index = 0)
-      currentPage * itemsPerPage // 1 * 5  = (0 , 10)
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
     );
   }, [filteredProblems, currentPage]);
 
+  const handleDelete = (id) => {
+    onDeleteProblem(id);
+  };
 
-  const difficulties = ["EASY", "MEDIUM", "HARD"];
+  const handleCreatePlaylist = async (data) => {
+    await createPlaylist(data);
+  };
 
-  const handleDelete = (id)=>{}
-
-  const handleAddToPlaylist = (id)=>{}
+  const handleAddToPlaylist = (problemId) => {
+    setSelectedProblemId(problemId);
+    setIsAddToPlaylistModalOpen(true);
+  };
 
   return (
     <div className="w-full max-w-6xl mx-auto mt-10">
+      {/* Header with Create Playlist Button */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Problems</h2>
-        <button className="btn btn-primary gap-2" onClick={() => {}}>
+        <button
+          className="btn btn-primary gap-2"
+          onClick={() => setIsCreateModalOpen(true)}
+        >
           <Plus className="w-4 h-4" />
           Create Playlist
         </button>
       </div>
 
+      {/* Filters */}
       <div className="flex flex-wrap justify-between items-center mb-6 gap-4">
         <input
           type="text"
@@ -92,9 +117,10 @@ const ProblemTable = ({ problems }) => {
         </select>
       </div>
 
+      {/* Table */}
       <div className="overflow-x-auto rounded-xl shadow-md">
         <table className="table table-zebra table-lg bg-base-200 text-base-content">
-          <thead className="bg-base-200">
+          <thead className="bg-base-300">
             <tr>
               <th>Solved</th>
               <th>Title</th>
@@ -104,12 +130,12 @@ const ProblemTable = ({ problems }) => {
             </tr>
           </thead>
           <tbody>
-{
-    paginatedProblems.length > 0 ? (
-          paginatedProblems.map((problem)=>{
-            const isSolved = problem.solvedBy.some((user)=>user.userId === authUser?.id);
-
-               return (
+            {paginatedProblems.length > 0 ? (
+              paginatedProblems.map((problem) => {
+                const isSolved = problem.solvedBy.some(
+                  (user) => user.userId === authUser?.id
+                );
+                return (
                   <tr key={problem.id}>
                     <td>
                       <input
@@ -175,40 +201,53 @@ const ProblemTable = ({ problems }) => {
                     </td>
                   </tr>
                 );
-
-          })
-    ) : ( <tr>
+              })
+            ) : (
+              <tr>
                 <td colSpan={5} className="text-center py-6 text-gray-500">
                   No problems found.
                 </td>
-              </tr>)
-}
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
 
-  {/*  */}
-  <div className="flex justify-center mt-6 gap-2">
-<button
-className="btn btn-sm"
-disabled={currentPage === 1}
-onClick={()=>setCurrentPage((prev)=>prev-1)}
->
-Prev
-</button>
-    <span className="btn btn-ghost btn-sm">
+      {/* Pagination */}
+      <div className="flex justify-center mt-6 gap-2">
+        <button
+          className="btn btn-sm"
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+        >
+          Prev
+        </button>
+        <span className="btn btn-ghost btn-sm">
           {currentPage} / {totalPages}
         </span>
- <button
-className="btn btn-sm"
-disabled={currentPage === totalPages}
-onClick={()=>setCurrentPage((prev)=>prev+1)}
->
-Next
-</button>
-  </div>
+        <button
+          className="btn btn-sm"
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+        >
+          Next
+        </button>
+      </div>
+
+      {/* Modals */}
+      <CreatePlaylistModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+        onSubmit={handleCreatePlaylist}
+      />
+      
+      <AddToPlaylistModal
+        isOpen={isAddToPlaylistModalOpen}
+        onClose={() => setIsAddToPlaylistModalOpen(false)}
+        problemId={selectedProblemId}
+      />
     </div>
   );
 };
 
-export default ProblemTable;
+export default ProblemsTable;

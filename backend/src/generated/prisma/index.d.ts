@@ -2825,8 +2825,9 @@ export namespace Prisma {
     hints: string | null
     userId: string | null
     difficulty: $Enums.Difficulty | null
+    isDemo: boolean | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type ProblemsMaxAggregateOutputType = {
@@ -2838,8 +2839,9 @@ export namespace Prisma {
     hints: string | null
     userId: string | null
     difficulty: $Enums.Difficulty | null
+    isDemo: boolean | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type ProblemsCountAggregateOutputType = {
@@ -2853,11 +2855,12 @@ export namespace Prisma {
     hints: number
     userId: number
     difficulty: number
+    isDemo: number
     testcases: number
     codeSnippets: number
     referenceSolutions: number
     updatedAt: number
-    createdAT: number
+    createdAt: number
     _all: number
   }
 
@@ -2871,8 +2874,9 @@ export namespace Prisma {
     hints?: true
     userId?: true
     difficulty?: true
+    isDemo?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type ProblemsMaxAggregateInputType = {
@@ -2884,8 +2888,9 @@ export namespace Prisma {
     hints?: true
     userId?: true
     difficulty?: true
+    isDemo?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type ProblemsCountAggregateInputType = {
@@ -2899,11 +2904,12 @@ export namespace Prisma {
     hints?: true
     userId?: true
     difficulty?: true
+    isDemo?: true
     testcases?: true
     codeSnippets?: true
     referenceSolutions?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -2988,13 +2994,14 @@ export namespace Prisma {
     constrains: string | null
     examples: JsonValue
     hints: string | null
-    userId: string
+    userId: string | null
     difficulty: $Enums.Difficulty
+    isDemo: boolean
     testcases: JsonValue
     codeSnippets: JsonValue
     referenceSolutions: JsonValue
     updatedAt: Date
-    createdAT: Date
+    createdAt: Date
     _count: ProblemsCountAggregateOutputType | null
     _min: ProblemsMinAggregateOutputType | null
     _max: ProblemsMaxAggregateOutputType | null
@@ -3025,12 +3032,13 @@ export namespace Prisma {
     hints?: boolean
     userId?: boolean
     difficulty?: boolean
+    isDemo?: boolean
     testcases?: boolean
     codeSnippets?: boolean
     referenceSolutions?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    createdAt?: boolean
+    user?: boolean | Problems$userArgs<ExtArgs>
     submission?: boolean | Problems$submissionArgs<ExtArgs>
     solvedBy?: boolean | Problems$solvedByArgs<ExtArgs>
     problemsPlaylists?: boolean | Problems$problemsPlaylistsArgs<ExtArgs>
@@ -3048,12 +3056,13 @@ export namespace Prisma {
     hints?: boolean
     userId?: boolean
     difficulty?: boolean
+    isDemo?: boolean
     testcases?: boolean
     codeSnippets?: boolean
     referenceSolutions?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    createdAt?: boolean
+    user?: boolean | Problems$userArgs<ExtArgs>
   }, ExtArgs["result"]["problems"]>
 
   export type ProblemsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3067,12 +3076,13 @@ export namespace Prisma {
     hints?: boolean
     userId?: boolean
     difficulty?: boolean
+    isDemo?: boolean
     testcases?: boolean
     codeSnippets?: boolean
     referenceSolutions?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    createdAt?: boolean
+    user?: boolean | Problems$userArgs<ExtArgs>
   }, ExtArgs["result"]["problems"]>
 
   export type ProblemsSelectScalar = {
@@ -3086,32 +3096,33 @@ export namespace Prisma {
     hints?: boolean
     userId?: boolean
     difficulty?: boolean
+    isDemo?: boolean
     testcases?: boolean
     codeSnippets?: boolean
     referenceSolutions?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
   }
 
-  export type ProblemsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "tags" | "editorial" | "constrains" | "examples" | "hints" | "userId" | "difficulty" | "testcases" | "codeSnippets" | "referenceSolutions" | "updatedAt" | "createdAT", ExtArgs["result"]["problems"]>
+  export type ProblemsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "tags" | "editorial" | "constrains" | "examples" | "hints" | "userId" | "difficulty" | "isDemo" | "testcases" | "codeSnippets" | "referenceSolutions" | "updatedAt" | "createdAt", ExtArgs["result"]["problems"]>
   export type ProblemsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | Problems$userArgs<ExtArgs>
     submission?: boolean | Problems$submissionArgs<ExtArgs>
     solvedBy?: boolean | Problems$solvedByArgs<ExtArgs>
     problemsPlaylists?: boolean | Problems$problemsPlaylistsArgs<ExtArgs>
     _count?: boolean | ProblemsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProblemsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | Problems$userArgs<ExtArgs>
   }
   export type ProblemsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
+    user?: boolean | Problems$userArgs<ExtArgs>
   }
 
   export type $ProblemsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Problems"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs> | null
       submission: Prisma.$SubmissionPayload<ExtArgs>[]
       solvedBy: Prisma.$ProblemSolvedPayload<ExtArgs>[]
       problemsPlaylists: Prisma.$ProblemInPlaylistPayload<ExtArgs>[]
@@ -3125,13 +3136,14 @@ export namespace Prisma {
       constrains: string | null
       examples: Prisma.JsonValue
       hints: string | null
-      userId: string
+      userId: string | null
       difficulty: $Enums.Difficulty
+      isDemo: boolean
       testcases: Prisma.JsonValue
       codeSnippets: Prisma.JsonValue
       referenceSolutions: Prisma.JsonValue
       updatedAt: Date
-      createdAT: Date
+      createdAt: Date
     }, ExtArgs["result"]["problems"]>
     composites: {}
   }
@@ -3526,7 +3538,7 @@ export namespace Prisma {
    */
   export interface Prisma__ProblemsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends Problems$userArgs<ExtArgs> = {}>(args?: Subset<T, Problems$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     submission<T extends Problems$submissionArgs<ExtArgs> = {}>(args?: Subset<T, Problems$submissionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     solvedBy<T extends Problems$solvedByArgs<ExtArgs> = {}>(args?: Subset<T, Problems$solvedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemSolvedPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     problemsPlaylists<T extends Problems$problemsPlaylistsArgs<ExtArgs> = {}>(args?: Subset<T, Problems$problemsPlaylistsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemInPlaylistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3569,11 +3581,12 @@ export namespace Prisma {
     readonly hints: FieldRef<"Problems", 'String'>
     readonly userId: FieldRef<"Problems", 'String'>
     readonly difficulty: FieldRef<"Problems", 'Difficulty'>
+    readonly isDemo: FieldRef<"Problems", 'Boolean'>
     readonly testcases: FieldRef<"Problems", 'Json'>
     readonly codeSnippets: FieldRef<"Problems", 'Json'>
     readonly referenceSolutions: FieldRef<"Problems", 'Json'>
     readonly updatedAt: FieldRef<"Problems", 'DateTime'>
-    readonly createdAT: FieldRef<"Problems", 'DateTime'>
+    readonly createdAt: FieldRef<"Problems", 'DateTime'>
   }
     
 
@@ -3970,6 +3983,25 @@ export namespace Prisma {
   }
 
   /**
+   * Problems.user
+   */
+  export type Problems$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
    * Problems.submission
    */
   export type Problems$submissionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4083,7 +4115,7 @@ export namespace Prisma {
     memory: string | null
     time: string | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type SubmissionMaxAggregateOutputType = {
@@ -4099,7 +4131,7 @@ export namespace Prisma {
     memory: string | null
     time: string | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type SubmissionCountAggregateOutputType = {
@@ -4116,7 +4148,7 @@ export namespace Prisma {
     memory: number
     time: number
     updatedAt: number
-    createdAT: number
+    createdAt: number
     _all: number
   }
 
@@ -4134,7 +4166,7 @@ export namespace Prisma {
     memory?: true
     time?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type SubmissionMaxAggregateInputType = {
@@ -4150,7 +4182,7 @@ export namespace Prisma {
     memory?: true
     time?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type SubmissionCountAggregateInputType = {
@@ -4167,7 +4199,7 @@ export namespace Prisma {
     memory?: true
     time?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -4257,7 +4289,7 @@ export namespace Prisma {
     memory: string | null
     time: string | null
     updatedAt: Date
-    createdAT: Date
+    createdAt: Date
     _count: SubmissionCountAggregateOutputType | null
     _min: SubmissionMinAggregateOutputType | null
     _max: SubmissionMaxAggregateOutputType | null
@@ -4291,7 +4323,7 @@ export namespace Prisma {
     memory?: boolean
     time?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemsDefaultArgs<ExtArgs>
     testCases?: boolean | Submission$testCasesArgs<ExtArgs>
@@ -4312,7 +4344,7 @@ export namespace Prisma {
     memory?: boolean
     time?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["submission"]>
@@ -4331,7 +4363,7 @@ export namespace Prisma {
     memory?: boolean
     time?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["submission"]>
@@ -4350,10 +4382,10 @@ export namespace Prisma {
     memory?: boolean
     time?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
   }
 
-  export type SubmissionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "problemId" | "sourceCode" | "language" | "stdin" | "stderr" | "stdout" | "compileOutput" | "status" | "memory" | "time" | "updatedAt" | "createdAT", ExtArgs["result"]["submission"]>
+  export type SubmissionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "problemId" | "sourceCode" | "language" | "stdin" | "stderr" | "stdout" | "compileOutput" | "status" | "memory" | "time" | "updatedAt" | "createdAt", ExtArgs["result"]["submission"]>
   export type SubmissionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     problem?: boolean | ProblemsDefaultArgs<ExtArgs>
@@ -4390,7 +4422,7 @@ export namespace Prisma {
       memory: string | null
       time: string | null
       updatedAt: Date
-      createdAT: Date
+      createdAt: Date
     }, ExtArgs["result"]["submission"]>
     composites: {}
   }
@@ -4830,7 +4862,7 @@ export namespace Prisma {
     readonly memory: FieldRef<"Submission", 'String'>
     readonly time: FieldRef<"Submission", 'String'>
     readonly updatedAt: FieldRef<"Submission", 'DateTime'>
-    readonly createdAT: FieldRef<"Submission", 'DateTime'>
+    readonly createdAt: FieldRef<"Submission", 'DateTime'>
   }
     
 
@@ -5302,7 +5334,7 @@ export namespace Prisma {
     testCase: number | null
     passed: boolean | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type TestCaseResultMaxAggregateOutputType = {
@@ -5318,7 +5350,7 @@ export namespace Prisma {
     testCase: number | null
     passed: boolean | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type TestCaseResultCountAggregateOutputType = {
@@ -5334,7 +5366,7 @@ export namespace Prisma {
     testCase: number
     passed: number
     updatedAt: number
-    createdAT: number
+    createdAt: number
     _all: number
   }
 
@@ -5360,7 +5392,7 @@ export namespace Prisma {
     testCase?: true
     passed?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type TestCaseResultMaxAggregateInputType = {
@@ -5376,7 +5408,7 @@ export namespace Prisma {
     testCase?: true
     passed?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type TestCaseResultCountAggregateInputType = {
@@ -5392,7 +5424,7 @@ export namespace Prisma {
     testCase?: true
     passed?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -5495,7 +5527,7 @@ export namespace Prisma {
     testCase: number
     passed: boolean
     updatedAt: Date
-    createdAT: Date
+    createdAt: Date
     _count: TestCaseResultCountAggregateOutputType | null
     _avg: TestCaseResultAvgAggregateOutputType | null
     _sum: TestCaseResultSumAggregateOutputType | null
@@ -5530,7 +5562,7 @@ export namespace Prisma {
     testCase?: boolean
     passed?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     submission?: boolean | SubmissionDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["testCaseResult"]>
 
@@ -5547,7 +5579,7 @@ export namespace Prisma {
     testCase?: boolean
     passed?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     submission?: boolean | SubmissionDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["testCaseResult"]>
 
@@ -5564,7 +5596,7 @@ export namespace Prisma {
     testCase?: boolean
     passed?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     submission?: boolean | SubmissionDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["testCaseResult"]>
 
@@ -5581,10 +5613,10 @@ export namespace Prisma {
     testCase?: boolean
     passed?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
   }
 
-  export type TestCaseResultOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "submissionId" | "status" | "memory" | "time" | "expected" | "stderr" | "stdout" | "compileOutput" | "testCase" | "passed" | "updatedAt" | "createdAT", ExtArgs["result"]["testCaseResult"]>
+  export type TestCaseResultOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "submissionId" | "status" | "memory" | "time" | "expected" | "stderr" | "stdout" | "compileOutput" | "testCase" | "passed" | "updatedAt" | "createdAt", ExtArgs["result"]["testCaseResult"]>
   export type TestCaseResultInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     submission?: boolean | SubmissionDefaultArgs<ExtArgs>
   }
@@ -5613,7 +5645,7 @@ export namespace Prisma {
       testCase: number
       passed: boolean
       updatedAt: Date
-      createdAT: Date
+      createdAt: Date
     }, ExtArgs["result"]["testCaseResult"]>
     composites: {}
   }
@@ -6050,7 +6082,7 @@ export namespace Prisma {
     readonly testCase: FieldRef<"TestCaseResult", 'Int'>
     readonly passed: FieldRef<"TestCaseResult", 'Boolean'>
     readonly updatedAt: FieldRef<"TestCaseResult", 'DateTime'>
-    readonly createdAT: FieldRef<"TestCaseResult", 'DateTime'>
+    readonly createdAt: FieldRef<"TestCaseResult", 'DateTime'>
   }
     
 
@@ -6480,7 +6512,7 @@ export namespace Prisma {
     userId: string | null
     problemId: string | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type ProblemSolvedMaxAggregateOutputType = {
@@ -6488,7 +6520,7 @@ export namespace Prisma {
     userId: string | null
     problemId: string | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type ProblemSolvedCountAggregateOutputType = {
@@ -6496,7 +6528,7 @@ export namespace Prisma {
     userId: number
     problemId: number
     updatedAt: number
-    createdAT: number
+    createdAt: number
     _all: number
   }
 
@@ -6506,7 +6538,7 @@ export namespace Prisma {
     userId?: true
     problemId?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type ProblemSolvedMaxAggregateInputType = {
@@ -6514,7 +6546,7 @@ export namespace Prisma {
     userId?: true
     problemId?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type ProblemSolvedCountAggregateInputType = {
@@ -6522,7 +6554,7 @@ export namespace Prisma {
     userId?: true
     problemId?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -6603,7 +6635,7 @@ export namespace Prisma {
     userId: string
     problemId: string
     updatedAt: Date
-    createdAT: Date
+    createdAt: Date
     _count: ProblemSolvedCountAggregateOutputType | null
     _min: ProblemSolvedMinAggregateOutputType | null
     _max: ProblemSolvedMaxAggregateOutputType | null
@@ -6628,7 +6660,7 @@ export namespace Prisma {
     userId?: boolean
     problemId?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problems?: boolean | ProblemsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problemSolved"]>
@@ -6638,7 +6670,7 @@ export namespace Prisma {
     userId?: boolean
     problemId?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problems?: boolean | ProblemsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problemSolved"]>
@@ -6648,7 +6680,7 @@ export namespace Prisma {
     userId?: boolean
     problemId?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     problems?: boolean | ProblemsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problemSolved"]>
@@ -6658,10 +6690,10 @@ export namespace Prisma {
     userId?: boolean
     problemId?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
   }
 
-  export type ProblemSolvedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "problemId" | "updatedAt" | "createdAT", ExtArgs["result"]["problemSolved"]>
+  export type ProblemSolvedOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "problemId" | "updatedAt" | "createdAt", ExtArgs["result"]["problemSolved"]>
   export type ProblemSolvedInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     problems?: boolean | ProblemsDefaultArgs<ExtArgs>
@@ -6686,7 +6718,7 @@ export namespace Prisma {
       userId: string
       problemId: string
       updatedAt: Date
-      createdAT: Date
+      createdAt: Date
     }, ExtArgs["result"]["problemSolved"]>
     composites: {}
   }
@@ -7116,7 +7148,7 @@ export namespace Prisma {
     readonly userId: FieldRef<"ProblemSolved", 'String'>
     readonly problemId: FieldRef<"ProblemSolved", 'String'>
     readonly updatedAt: FieldRef<"ProblemSolved", 'DateTime'>
-    readonly createdAT: FieldRef<"ProblemSolved", 'DateTime'>
+    readonly createdAt: FieldRef<"ProblemSolved", 'DateTime'>
   }
     
 
@@ -7547,7 +7579,7 @@ export namespace Prisma {
     userId: string | null
     description: string | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type PlaylistMaxAggregateOutputType = {
@@ -7556,7 +7588,7 @@ export namespace Prisma {
     userId: string | null
     description: string | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type PlaylistCountAggregateOutputType = {
@@ -7565,7 +7597,7 @@ export namespace Prisma {
     userId: number
     description: number
     updatedAt: number
-    createdAT: number
+    createdAt: number
     _all: number
   }
 
@@ -7576,7 +7608,7 @@ export namespace Prisma {
     userId?: true
     description?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type PlaylistMaxAggregateInputType = {
@@ -7585,7 +7617,7 @@ export namespace Prisma {
     userId?: true
     description?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type PlaylistCountAggregateInputType = {
@@ -7594,7 +7626,7 @@ export namespace Prisma {
     userId?: true
     description?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -7676,7 +7708,7 @@ export namespace Prisma {
     userId: string
     description: string | null
     updatedAt: Date
-    createdAT: Date
+    createdAt: Date
     _count: PlaylistCountAggregateOutputType | null
     _min: PlaylistMinAggregateOutputType | null
     _max: PlaylistMaxAggregateOutputType | null
@@ -7702,7 +7734,7 @@ export namespace Prisma {
     userId?: boolean
     description?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     problems?: boolean | Playlist$problemsArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | PlaylistCountOutputTypeDefaultArgs<ExtArgs>
@@ -7714,7 +7746,7 @@ export namespace Prisma {
     userId?: boolean
     description?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["playlist"]>
 
@@ -7724,7 +7756,7 @@ export namespace Prisma {
     userId?: boolean
     description?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["playlist"]>
 
@@ -7734,10 +7766,10 @@ export namespace Prisma {
     userId?: boolean
     description?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
   }
 
-  export type PlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId" | "description" | "updatedAt" | "createdAT", ExtArgs["result"]["playlist"]>
+  export type PlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId" | "description" | "updatedAt" | "createdAt", ExtArgs["result"]["playlist"]>
   export type PlaylistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     problems?: boolean | Playlist$problemsArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -7762,7 +7794,7 @@ export namespace Prisma {
       userId: string
       description: string | null
       updatedAt: Date
-      createdAT: Date
+      createdAt: Date
     }, ExtArgs["result"]["playlist"]>
     composites: {}
   }
@@ -8193,7 +8225,7 @@ export namespace Prisma {
     readonly userId: FieldRef<"Playlist", 'String'>
     readonly description: FieldRef<"Playlist", 'String'>
     readonly updatedAt: FieldRef<"Playlist", 'DateTime'>
-    readonly createdAT: FieldRef<"Playlist", 'DateTime'>
+    readonly createdAt: FieldRef<"Playlist", 'DateTime'>
   }
     
 
@@ -8647,7 +8679,7 @@ export namespace Prisma {
     playlistId: string | null
     problemId: string | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type ProblemInPlaylistMaxAggregateOutputType = {
@@ -8655,7 +8687,7 @@ export namespace Prisma {
     playlistId: string | null
     problemId: string | null
     updatedAt: Date | null
-    createdAT: Date | null
+    createdAt: Date | null
   }
 
   export type ProblemInPlaylistCountAggregateOutputType = {
@@ -8663,7 +8695,7 @@ export namespace Prisma {
     playlistId: number
     problemId: number
     updatedAt: number
-    createdAT: number
+    createdAt: number
     _all: number
   }
 
@@ -8673,7 +8705,7 @@ export namespace Prisma {
     playlistId?: true
     problemId?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type ProblemInPlaylistMaxAggregateInputType = {
@@ -8681,7 +8713,7 @@ export namespace Prisma {
     playlistId?: true
     problemId?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
   }
 
   export type ProblemInPlaylistCountAggregateInputType = {
@@ -8689,7 +8721,7 @@ export namespace Prisma {
     playlistId?: true
     problemId?: true
     updatedAt?: true
-    createdAT?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -8770,7 +8802,7 @@ export namespace Prisma {
     playlistId: string
     problemId: string
     updatedAt: Date
-    createdAT: Date
+    createdAt: Date
     _count: ProblemInPlaylistCountAggregateOutputType | null
     _min: ProblemInPlaylistMinAggregateOutputType | null
     _max: ProblemInPlaylistMaxAggregateOutputType | null
@@ -8795,7 +8827,7 @@ export namespace Prisma {
     playlistId?: boolean
     problemId?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
     problem?: boolean | ProblemsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problemInPlaylist"]>
@@ -8805,7 +8837,7 @@ export namespace Prisma {
     playlistId?: boolean
     problemId?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
     problem?: boolean | ProblemsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problemInPlaylist"]>
@@ -8815,7 +8847,7 @@ export namespace Prisma {
     playlistId?: boolean
     problemId?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
     playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
     problem?: boolean | ProblemsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problemInPlaylist"]>
@@ -8825,10 +8857,10 @@ export namespace Prisma {
     playlistId?: boolean
     problemId?: boolean
     updatedAt?: boolean
-    createdAT?: boolean
+    createdAt?: boolean
   }
 
-  export type ProblemInPlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "playlistId" | "problemId" | "updatedAt" | "createdAT", ExtArgs["result"]["problemInPlaylist"]>
+  export type ProblemInPlaylistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "playlistId" | "problemId" | "updatedAt" | "createdAt", ExtArgs["result"]["problemInPlaylist"]>
   export type ProblemInPlaylistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     playlist?: boolean | PlaylistDefaultArgs<ExtArgs>
     problem?: boolean | ProblemsDefaultArgs<ExtArgs>
@@ -8853,7 +8885,7 @@ export namespace Prisma {
       playlistId: string
       problemId: string
       updatedAt: Date
-      createdAT: Date
+      createdAt: Date
     }, ExtArgs["result"]["problemInPlaylist"]>
     composites: {}
   }
@@ -9283,7 +9315,7 @@ export namespace Prisma {
     readonly playlistId: FieldRef<"ProblemInPlaylist", 'String'>
     readonly problemId: FieldRef<"ProblemInPlaylist", 'String'>
     readonly updatedAt: FieldRef<"ProblemInPlaylist", 'DateTime'>
-    readonly createdAT: FieldRef<"ProblemInPlaylist", 'DateTime'>
+    readonly createdAt: FieldRef<"ProblemInPlaylist", 'DateTime'>
   }
     
 
@@ -9737,11 +9769,12 @@ export namespace Prisma {
     hints: 'hints',
     userId: 'userId',
     difficulty: 'difficulty',
+    isDemo: 'isDemo',
     testcases: 'testcases',
     codeSnippets: 'codeSnippets',
     referenceSolutions: 'referenceSolutions',
     updatedAt: 'updatedAt',
-    createdAT: 'createdAT'
+    createdAt: 'createdAt'
   };
 
   export type ProblemsScalarFieldEnum = (typeof ProblemsScalarFieldEnum)[keyof typeof ProblemsScalarFieldEnum]
@@ -9761,7 +9794,7 @@ export namespace Prisma {
     memory: 'memory',
     time: 'time',
     updatedAt: 'updatedAt',
-    createdAT: 'createdAT'
+    createdAt: 'createdAt'
   };
 
   export type SubmissionScalarFieldEnum = (typeof SubmissionScalarFieldEnum)[keyof typeof SubmissionScalarFieldEnum]
@@ -9780,7 +9813,7 @@ export namespace Prisma {
     testCase: 'testCase',
     passed: 'passed',
     updatedAt: 'updatedAt',
-    createdAT: 'createdAT'
+    createdAt: 'createdAt'
   };
 
   export type TestCaseResultScalarFieldEnum = (typeof TestCaseResultScalarFieldEnum)[keyof typeof TestCaseResultScalarFieldEnum]
@@ -9791,7 +9824,7 @@ export namespace Prisma {
     userId: 'userId',
     problemId: 'problemId',
     updatedAt: 'updatedAt',
-    createdAT: 'createdAT'
+    createdAt: 'createdAt'
   };
 
   export type ProblemSolvedScalarFieldEnum = (typeof ProblemSolvedScalarFieldEnum)[keyof typeof ProblemSolvedScalarFieldEnum]
@@ -9803,7 +9836,7 @@ export namespace Prisma {
     userId: 'userId',
     description: 'description',
     updatedAt: 'updatedAt',
-    createdAT: 'createdAT'
+    createdAt: 'createdAt'
   };
 
   export type PlaylistScalarFieldEnum = (typeof PlaylistScalarFieldEnum)[keyof typeof PlaylistScalarFieldEnum]
@@ -9814,7 +9847,7 @@ export namespace Prisma {
     playlistId: 'playlistId',
     problemId: 'problemId',
     updatedAt: 'updatedAt',
-    createdAT: 'createdAT'
+    createdAt: 'createdAt'
   };
 
   export type ProblemInPlaylistScalarFieldEnum = (typeof ProblemInPlaylistScalarFieldEnum)[keyof typeof ProblemInPlaylistScalarFieldEnum]
@@ -9936,6 +9969,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -9946,13 +9986,6 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -10064,14 +10097,15 @@ export namespace Prisma {
     constrains?: StringNullableFilter<"Problems"> | string | null
     examples?: JsonFilter<"Problems">
     hints?: StringNullableFilter<"Problems"> | string | null
-    userId?: StringFilter<"Problems"> | string
+    userId?: StringNullableFilter<"Problems"> | string | null
     difficulty?: EnumDifficultyFilter<"Problems"> | $Enums.Difficulty
+    isDemo?: BoolFilter<"Problems"> | boolean
     testcases?: JsonFilter<"Problems">
     codeSnippets?: JsonFilter<"Problems">
     referenceSolutions?: JsonFilter<"Problems">
     updatedAt?: DateTimeFilter<"Problems"> | Date | string
-    createdAT?: DateTimeFilter<"Problems"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    createdAt?: DateTimeFilter<"Problems"> | Date | string
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     submission?: SubmissionListRelationFilter
     solvedBy?: ProblemSolvedListRelationFilter
     problemsPlaylists?: ProblemInPlaylistListRelationFilter
@@ -10086,13 +10120,14 @@ export namespace Prisma {
     constrains?: SortOrderInput | SortOrder
     examples?: SortOrder
     hints?: SortOrderInput | SortOrder
-    userId?: SortOrder
+    userId?: SortOrderInput | SortOrder
     difficulty?: SortOrder
+    isDemo?: SortOrder
     testcases?: SortOrder
     codeSnippets?: SortOrder
     referenceSolutions?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
     submission?: SubmissionOrderByRelationAggregateInput
     solvedBy?: ProblemSolvedOrderByRelationAggregateInput
@@ -10111,14 +10146,15 @@ export namespace Prisma {
     constrains?: StringNullableFilter<"Problems"> | string | null
     examples?: JsonFilter<"Problems">
     hints?: StringNullableFilter<"Problems"> | string | null
-    userId?: StringFilter<"Problems"> | string
+    userId?: StringNullableFilter<"Problems"> | string | null
     difficulty?: EnumDifficultyFilter<"Problems"> | $Enums.Difficulty
+    isDemo?: BoolFilter<"Problems"> | boolean
     testcases?: JsonFilter<"Problems">
     codeSnippets?: JsonFilter<"Problems">
     referenceSolutions?: JsonFilter<"Problems">
     updatedAt?: DateTimeFilter<"Problems"> | Date | string
-    createdAT?: DateTimeFilter<"Problems"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    createdAt?: DateTimeFilter<"Problems"> | Date | string
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     submission?: SubmissionListRelationFilter
     solvedBy?: ProblemSolvedListRelationFilter
     problemsPlaylists?: ProblemInPlaylistListRelationFilter
@@ -10133,13 +10169,14 @@ export namespace Prisma {
     constrains?: SortOrderInput | SortOrder
     examples?: SortOrder
     hints?: SortOrderInput | SortOrder
-    userId?: SortOrder
+    userId?: SortOrderInput | SortOrder
     difficulty?: SortOrder
+    isDemo?: SortOrder
     testcases?: SortOrder
     codeSnippets?: SortOrder
     referenceSolutions?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     _count?: ProblemsCountOrderByAggregateInput
     _max?: ProblemsMaxOrderByAggregateInput
     _min?: ProblemsMinOrderByAggregateInput
@@ -10157,13 +10194,14 @@ export namespace Prisma {
     constrains?: StringNullableWithAggregatesFilter<"Problems"> | string | null
     examples?: JsonWithAggregatesFilter<"Problems">
     hints?: StringNullableWithAggregatesFilter<"Problems"> | string | null
-    userId?: StringWithAggregatesFilter<"Problems"> | string
+    userId?: StringNullableWithAggregatesFilter<"Problems"> | string | null
     difficulty?: EnumDifficultyWithAggregatesFilter<"Problems"> | $Enums.Difficulty
+    isDemo?: BoolWithAggregatesFilter<"Problems"> | boolean
     testcases?: JsonWithAggregatesFilter<"Problems">
     codeSnippets?: JsonWithAggregatesFilter<"Problems">
     referenceSolutions?: JsonWithAggregatesFilter<"Problems">
     updatedAt?: DateTimeWithAggregatesFilter<"Problems"> | Date | string
-    createdAT?: DateTimeWithAggregatesFilter<"Problems"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Problems"> | Date | string
   }
 
   export type SubmissionWhereInput = {
@@ -10183,7 +10221,7 @@ export namespace Prisma {
     memory?: StringNullableFilter<"Submission"> | string | null
     time?: StringNullableFilter<"Submission"> | string | null
     updatedAt?: DateTimeFilter<"Submission"> | Date | string
-    createdAT?: DateTimeFilter<"Submission"> | Date | string
+    createdAt?: DateTimeFilter<"Submission"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     problem?: XOR<ProblemsScalarRelationFilter, ProblemsWhereInput>
     testCases?: TestCaseResultListRelationFilter
@@ -10203,7 +10241,7 @@ export namespace Prisma {
     memory?: SortOrderInput | SortOrder
     time?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
     problem?: ProblemsOrderByWithRelationInput
     testCases?: TestCaseResultOrderByRelationAggregateInput
@@ -10226,7 +10264,7 @@ export namespace Prisma {
     memory?: StringNullableFilter<"Submission"> | string | null
     time?: StringNullableFilter<"Submission"> | string | null
     updatedAt?: DateTimeFilter<"Submission"> | Date | string
-    createdAT?: DateTimeFilter<"Submission"> | Date | string
+    createdAt?: DateTimeFilter<"Submission"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     problem?: XOR<ProblemsScalarRelationFilter, ProblemsWhereInput>
     testCases?: TestCaseResultListRelationFilter
@@ -10246,7 +10284,7 @@ export namespace Prisma {
     memory?: SortOrderInput | SortOrder
     time?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     _count?: SubmissionCountOrderByAggregateInput
     _max?: SubmissionMaxOrderByAggregateInput
     _min?: SubmissionMinOrderByAggregateInput
@@ -10269,7 +10307,7 @@ export namespace Prisma {
     memory?: StringNullableWithAggregatesFilter<"Submission"> | string | null
     time?: StringNullableWithAggregatesFilter<"Submission"> | string | null
     updatedAt?: DateTimeWithAggregatesFilter<"Submission"> | Date | string
-    createdAT?: DateTimeWithAggregatesFilter<"Submission"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Submission"> | Date | string
   }
 
   export type TestCaseResultWhereInput = {
@@ -10288,7 +10326,7 @@ export namespace Prisma {
     testCase?: IntFilter<"TestCaseResult"> | number
     passed?: BoolFilter<"TestCaseResult"> | boolean
     updatedAt?: DateTimeFilter<"TestCaseResult"> | Date | string
-    createdAT?: DateTimeFilter<"TestCaseResult"> | Date | string
+    createdAt?: DateTimeFilter<"TestCaseResult"> | Date | string
     submission?: XOR<SubmissionScalarRelationFilter, SubmissionWhereInput>
   }
 
@@ -10305,7 +10343,7 @@ export namespace Prisma {
     testCase?: SortOrder
     passed?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     submission?: SubmissionOrderByWithRelationInput
   }
 
@@ -10325,7 +10363,7 @@ export namespace Prisma {
     testCase?: IntFilter<"TestCaseResult"> | number
     passed?: BoolFilter<"TestCaseResult"> | boolean
     updatedAt?: DateTimeFilter<"TestCaseResult"> | Date | string
-    createdAT?: DateTimeFilter<"TestCaseResult"> | Date | string
+    createdAt?: DateTimeFilter<"TestCaseResult"> | Date | string
     submission?: XOR<SubmissionScalarRelationFilter, SubmissionWhereInput>
   }, "id">
 
@@ -10342,7 +10380,7 @@ export namespace Prisma {
     testCase?: SortOrder
     passed?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     _count?: TestCaseResultCountOrderByAggregateInput
     _avg?: TestCaseResultAvgOrderByAggregateInput
     _max?: TestCaseResultMaxOrderByAggregateInput
@@ -10366,7 +10404,7 @@ export namespace Prisma {
     testCase?: IntWithAggregatesFilter<"TestCaseResult"> | number
     passed?: BoolWithAggregatesFilter<"TestCaseResult"> | boolean
     updatedAt?: DateTimeWithAggregatesFilter<"TestCaseResult"> | Date | string
-    createdAT?: DateTimeWithAggregatesFilter<"TestCaseResult"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"TestCaseResult"> | Date | string
   }
 
   export type ProblemSolvedWhereInput = {
@@ -10377,7 +10415,7 @@ export namespace Prisma {
     userId?: StringFilter<"ProblemSolved"> | string
     problemId?: StringFilter<"ProblemSolved"> | string
     updatedAt?: DateTimeFilter<"ProblemSolved"> | Date | string
-    createdAT?: DateTimeFilter<"ProblemSolved"> | Date | string
+    createdAt?: DateTimeFilter<"ProblemSolved"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     problems?: XOR<ProblemsScalarRelationFilter, ProblemsWhereInput>
   }
@@ -10387,7 +10425,7 @@ export namespace Prisma {
     userId?: SortOrder
     problemId?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
     problems?: ProblemsOrderByWithRelationInput
   }
@@ -10401,7 +10439,7 @@ export namespace Prisma {
     userId?: StringFilter<"ProblemSolved"> | string
     problemId?: StringFilter<"ProblemSolved"> | string
     updatedAt?: DateTimeFilter<"ProblemSolved"> | Date | string
-    createdAT?: DateTimeFilter<"ProblemSolved"> | Date | string
+    createdAt?: DateTimeFilter<"ProblemSolved"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     problems?: XOR<ProblemsScalarRelationFilter, ProblemsWhereInput>
   }, "id" | "userId_problemId">
@@ -10411,7 +10449,7 @@ export namespace Prisma {
     userId?: SortOrder
     problemId?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     _count?: ProblemSolvedCountOrderByAggregateInput
     _max?: ProblemSolvedMaxOrderByAggregateInput
     _min?: ProblemSolvedMinOrderByAggregateInput
@@ -10425,7 +10463,7 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"ProblemSolved"> | string
     problemId?: StringWithAggregatesFilter<"ProblemSolved"> | string
     updatedAt?: DateTimeWithAggregatesFilter<"ProblemSolved"> | Date | string
-    createdAT?: DateTimeWithAggregatesFilter<"ProblemSolved"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"ProblemSolved"> | Date | string
   }
 
   export type PlaylistWhereInput = {
@@ -10437,7 +10475,7 @@ export namespace Prisma {
     userId?: StringFilter<"Playlist"> | string
     description?: StringNullableFilter<"Playlist"> | string | null
     updatedAt?: DateTimeFilter<"Playlist"> | Date | string
-    createdAT?: DateTimeFilter<"Playlist"> | Date | string
+    createdAt?: DateTimeFilter<"Playlist"> | Date | string
     problems?: ProblemInPlaylistListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -10448,7 +10486,7 @@ export namespace Prisma {
     userId?: SortOrder
     description?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     problems?: ProblemInPlaylistOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
   }
@@ -10463,7 +10501,7 @@ export namespace Prisma {
     userId?: StringFilter<"Playlist"> | string
     description?: StringNullableFilter<"Playlist"> | string | null
     updatedAt?: DateTimeFilter<"Playlist"> | Date | string
-    createdAT?: DateTimeFilter<"Playlist"> | Date | string
+    createdAt?: DateTimeFilter<"Playlist"> | Date | string
     problems?: ProblemInPlaylistListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "name_userId">
@@ -10474,7 +10512,7 @@ export namespace Prisma {
     userId?: SortOrder
     description?: SortOrderInput | SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     _count?: PlaylistCountOrderByAggregateInput
     _max?: PlaylistMaxOrderByAggregateInput
     _min?: PlaylistMinOrderByAggregateInput
@@ -10489,7 +10527,7 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"Playlist"> | string
     description?: StringNullableWithAggregatesFilter<"Playlist"> | string | null
     updatedAt?: DateTimeWithAggregatesFilter<"Playlist"> | Date | string
-    createdAT?: DateTimeWithAggregatesFilter<"Playlist"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Playlist"> | Date | string
   }
 
   export type ProblemInPlaylistWhereInput = {
@@ -10500,7 +10538,7 @@ export namespace Prisma {
     playlistId?: StringFilter<"ProblemInPlaylist"> | string
     problemId?: StringFilter<"ProblemInPlaylist"> | string
     updatedAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
-    createdAT?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
+    createdAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
     playlist?: XOR<PlaylistScalarRelationFilter, PlaylistWhereInput>
     problem?: XOR<ProblemsScalarRelationFilter, ProblemsWhereInput>
   }
@@ -10510,7 +10548,7 @@ export namespace Prisma {
     playlistId?: SortOrder
     problemId?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     playlist?: PlaylistOrderByWithRelationInput
     problem?: ProblemsOrderByWithRelationInput
   }
@@ -10523,7 +10561,7 @@ export namespace Prisma {
     playlistId?: StringFilter<"ProblemInPlaylist"> | string
     problemId?: StringFilter<"ProblemInPlaylist"> | string
     updatedAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
-    createdAT?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
+    createdAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
     playlist?: XOR<PlaylistScalarRelationFilter, PlaylistWhereInput>
     problem?: XOR<ProblemsScalarRelationFilter, ProblemsWhereInput>
   }, "id">
@@ -10533,7 +10571,7 @@ export namespace Prisma {
     playlistId?: SortOrder
     problemId?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
     _count?: ProblemInPlaylistCountOrderByAggregateInput
     _max?: ProblemInPlaylistMaxOrderByAggregateInput
     _min?: ProblemInPlaylistMinOrderByAggregateInput
@@ -10547,7 +10585,7 @@ export namespace Prisma {
     playlistId?: StringWithAggregatesFilter<"ProblemInPlaylist"> | string
     problemId?: StringWithAggregatesFilter<"ProblemInPlaylist"> | string
     updatedAt?: DateTimeWithAggregatesFilter<"ProblemInPlaylist"> | Date | string
-    createdAT?: DateTimeWithAggregatesFilter<"ProblemInPlaylist"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"ProblemInPlaylist"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -10653,12 +10691,13 @@ export namespace Prisma {
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
-    user: UserCreateNestedOneWithoutProblemsInput
+    createdAt?: Date | string
+    user?: UserCreateNestedOneWithoutProblemsInput
     submission?: SubmissionCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemsInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
@@ -10673,13 +10712,14 @@ export namespace Prisma {
     constrains?: string | null
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
-    userId: string
+    userId?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemsInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
@@ -10695,12 +10735,13 @@ export namespace Prisma {
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutProblemsNestedInput
     submission?: SubmissionUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemsNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
@@ -10715,13 +10756,14 @@ export namespace Prisma {
     constrains?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemsNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
@@ -10736,13 +10778,14 @@ export namespace Prisma {
     constrains?: string | null
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
-    userId: string
+    userId?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemsUpdateManyMutationInput = {
@@ -10755,11 +10798,12 @@ export namespace Prisma {
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemsUncheckedUpdateManyInput = {
@@ -10771,13 +10815,14 @@ export namespace Prisma {
     constrains?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SubmissionCreateInput = {
@@ -10792,7 +10837,7 @@ export namespace Prisma {
     memory?: string | null
     time?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     user: UserCreateNestedOneWithoutSubmissionInput
     problem: ProblemsCreateNestedOneWithoutSubmissionInput
     testCases?: TestCaseResultCreateNestedManyWithoutSubmissionInput
@@ -10812,7 +10857,7 @@ export namespace Prisma {
     memory?: string | null
     time?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     testCases?: TestCaseResultUncheckedCreateNestedManyWithoutSubmissionInput
   }
 
@@ -10828,7 +10873,7 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSubmissionNestedInput
     problem?: ProblemsUpdateOneRequiredWithoutSubmissionNestedInput
     testCases?: TestCaseResultUpdateManyWithoutSubmissionNestedInput
@@ -10848,7 +10893,7 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     testCases?: TestCaseResultUncheckedUpdateManyWithoutSubmissionNestedInput
   }
 
@@ -10866,7 +10911,7 @@ export namespace Prisma {
     memory?: string | null
     time?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type SubmissionUpdateManyMutationInput = {
@@ -10881,7 +10926,7 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SubmissionUncheckedUpdateManyInput = {
@@ -10898,7 +10943,7 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestCaseResultCreateInput = {
@@ -10913,7 +10958,7 @@ export namespace Prisma {
     testCase: number
     passed: boolean
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     submission: SubmissionCreateNestedOneWithoutTestCasesInput
   }
 
@@ -10930,7 +10975,7 @@ export namespace Prisma {
     testCase: number
     passed: boolean
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type TestCaseResultUpdateInput = {
@@ -10945,7 +10990,7 @@ export namespace Prisma {
     testCase?: IntFieldUpdateOperationsInput | number
     passed?: BoolFieldUpdateOperationsInput | boolean
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUpdateOneRequiredWithoutTestCasesNestedInput
   }
 
@@ -10962,7 +11007,7 @@ export namespace Prisma {
     testCase?: IntFieldUpdateOperationsInput | number
     passed?: BoolFieldUpdateOperationsInput | boolean
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestCaseResultCreateManyInput = {
@@ -10978,7 +11023,7 @@ export namespace Prisma {
     testCase: number
     passed: boolean
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type TestCaseResultUpdateManyMutationInput = {
@@ -10993,7 +11038,7 @@ export namespace Prisma {
     testCase?: IntFieldUpdateOperationsInput | number
     passed?: BoolFieldUpdateOperationsInput | boolean
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestCaseResultUncheckedUpdateManyInput = {
@@ -11009,13 +11054,13 @@ export namespace Prisma {
     testCase?: IntFieldUpdateOperationsInput | number
     passed?: BoolFieldUpdateOperationsInput | boolean
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemSolvedCreateInput = {
     id?: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     user: UserCreateNestedOneWithoutProblemSolvedInput
     problems: ProblemsCreateNestedOneWithoutSolvedByInput
   }
@@ -11025,13 +11070,13 @@ export namespace Prisma {
     userId: string
     problemId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemSolvedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProblemSolvedNestedInput
     problems?: ProblemsUpdateOneRequiredWithoutSolvedByNestedInput
   }
@@ -11041,7 +11086,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemSolvedCreateManyInput = {
@@ -11049,13 +11094,13 @@ export namespace Prisma {
     userId: string
     problemId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemSolvedUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemSolvedUncheckedUpdateManyInput = {
@@ -11063,7 +11108,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PlaylistCreateInput = {
@@ -11071,7 +11116,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     problems?: ProblemInPlaylistCreateNestedManyWithoutPlaylistInput
     user: UserCreateNestedOneWithoutPlaylistInput
   }
@@ -11082,7 +11127,7 @@ export namespace Prisma {
     userId: string
     description?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     problems?: ProblemInPlaylistUncheckedCreateNestedManyWithoutPlaylistInput
   }
 
@@ -11091,7 +11136,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemInPlaylistUpdateManyWithoutPlaylistNestedInput
     user?: UserUpdateOneRequiredWithoutPlaylistNestedInput
   }
@@ -11102,7 +11147,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemInPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput
   }
 
@@ -11112,7 +11157,7 @@ export namespace Prisma {
     userId: string
     description?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type PlaylistUpdateManyMutationInput = {
@@ -11120,7 +11165,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PlaylistUncheckedUpdateManyInput = {
@@ -11129,13 +11174,13 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemInPlaylistCreateInput = {
     id?: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     playlist: PlaylistCreateNestedOneWithoutProblemsInput
     problem: ProblemsCreateNestedOneWithoutProblemsPlaylistsInput
   }
@@ -11145,13 +11190,13 @@ export namespace Prisma {
     playlistId: string
     problemId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemInPlaylistUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     playlist?: PlaylistUpdateOneRequiredWithoutProblemsNestedInput
     problem?: ProblemsUpdateOneRequiredWithoutProblemsPlaylistsNestedInput
   }
@@ -11161,7 +11206,7 @@ export namespace Prisma {
     playlistId?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemInPlaylistCreateManyInput = {
@@ -11169,13 +11214,13 @@ export namespace Prisma {
     playlistId: string
     problemId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemInPlaylistUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemInPlaylistUncheckedUpdateManyInput = {
@@ -11183,7 +11228,7 @@ export namespace Prisma {
     playlistId?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -11410,9 +11455,14 @@ export namespace Prisma {
     not?: NestedEnumDifficultyFilter<$PrismaModel> | $Enums.Difficulty
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
   }
 
   export type ProblemInPlaylistListRelationFilter = {
@@ -11436,11 +11486,12 @@ export namespace Prisma {
     hints?: SortOrder
     userId?: SortOrder
     difficulty?: SortOrder
+    isDemo?: SortOrder
     testcases?: SortOrder
     codeSnippets?: SortOrder
     referenceSolutions?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ProblemsMaxOrderByAggregateInput = {
@@ -11452,8 +11503,9 @@ export namespace Prisma {
     hints?: SortOrder
     userId?: SortOrder
     difficulty?: SortOrder
+    isDemo?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ProblemsMinOrderByAggregateInput = {
@@ -11465,8 +11517,9 @@ export namespace Prisma {
     hints?: SortOrder
     userId?: SortOrder
     difficulty?: SortOrder
+    isDemo?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -11505,6 +11558,19 @@ export namespace Prisma {
     _max?: NestedEnumDifficultyFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
   export type ProblemsScalarRelationFilter = {
     is?: ProblemsWhereInput
     isNot?: ProblemsWhereInput
@@ -11534,7 +11600,7 @@ export namespace Prisma {
     memory?: SortOrder
     time?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type SubmissionMaxOrderByAggregateInput = {
@@ -11550,7 +11616,7 @@ export namespace Prisma {
     memory?: SortOrder
     time?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type SubmissionMinOrderByAggregateInput = {
@@ -11566,7 +11632,7 @@ export namespace Prisma {
     memory?: SortOrder
     time?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -11578,11 +11644,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type SubmissionScalarRelationFilter = {
@@ -11603,7 +11664,7 @@ export namespace Prisma {
     testCase?: SortOrder
     passed?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type TestCaseResultAvgOrderByAggregateInput = {
@@ -11623,7 +11684,7 @@ export namespace Prisma {
     testCase?: SortOrder
     passed?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type TestCaseResultMinOrderByAggregateInput = {
@@ -11639,7 +11700,7 @@ export namespace Prisma {
     testCase?: SortOrder
     passed?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type TestCaseResultSumOrderByAggregateInput = {
@@ -11662,14 +11723,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type ProblemSolvedUserIdProblemIdCompoundUniqueInput = {
     userId: string
     problemId: string
@@ -11680,7 +11733,7 @@ export namespace Prisma {
     userId?: SortOrder
     problemId?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ProblemSolvedMaxOrderByAggregateInput = {
@@ -11688,7 +11741,7 @@ export namespace Prisma {
     userId?: SortOrder
     problemId?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ProblemSolvedMinOrderByAggregateInput = {
@@ -11696,7 +11749,7 @@ export namespace Prisma {
     userId?: SortOrder
     problemId?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type PlaylistNameUserIdCompoundUniqueInput = {
@@ -11710,7 +11763,7 @@ export namespace Prisma {
     userId?: SortOrder
     description?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type PlaylistMaxOrderByAggregateInput = {
@@ -11719,7 +11772,7 @@ export namespace Prisma {
     userId?: SortOrder
     description?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type PlaylistMinOrderByAggregateInput = {
@@ -11728,7 +11781,7 @@ export namespace Prisma {
     userId?: SortOrder
     description?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type PlaylistScalarRelationFilter = {
@@ -11741,7 +11794,7 @@ export namespace Prisma {
     playlistId?: SortOrder
     problemId?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ProblemInPlaylistMaxOrderByAggregateInput = {
@@ -11749,7 +11802,7 @@ export namespace Prisma {
     playlistId?: SortOrder
     problemId?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ProblemInPlaylistMinOrderByAggregateInput = {
@@ -11757,7 +11810,7 @@ export namespace Prisma {
     playlistId?: SortOrder
     problemId?: SortOrder
     updatedAt?: SortOrder
-    createdAT?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type ProblemsCreateNestedManyWithoutUserInput = {
@@ -12005,10 +12058,16 @@ export namespace Prisma {
     set?: $Enums.Difficulty
   }
 
-  export type UserUpdateOneRequiredWithoutProblemsNestedInput = {
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type UserUpdateOneWithoutProblemsNestedInput = {
     create?: XOR<UserCreateWithoutProblemsInput, UserUncheckedCreateWithoutProblemsInput>
     connectOrCreate?: UserCreateOrConnectWithoutProblemsInput
     upsert?: UserUpsertWithoutProblemsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProblemsInput, UserUpdateWithoutProblemsInput>, UserUncheckedUpdateWithoutProblemsInput>
   }
@@ -12179,10 +12238,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type SubmissionUpdateOneRequiredWithoutTestCasesNestedInput = {
@@ -12437,6 +12492,11 @@ export namespace Prisma {
     notIn?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
     not?: NestedEnumDifficultyFilter<$PrismaModel> | $Enums.Difficulty
   }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -12471,9 +12531,12 @@ export namespace Prisma {
     _max?: NestedEnumDifficultyFilter<$PrismaModel>
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -12503,14 +12566,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type ProblemsCreateWithoutUserInput = {
     id?: string
     title: string
@@ -12521,11 +12576,12 @@ export namespace Prisma {
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     submission?: SubmissionCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemsInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
@@ -12541,11 +12597,12 @@ export namespace Prisma {
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemsInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
@@ -12573,7 +12630,7 @@ export namespace Prisma {
     memory?: string | null
     time?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     problem: ProblemsCreateNestedOneWithoutSubmissionInput
     testCases?: TestCaseResultCreateNestedManyWithoutSubmissionInput
   }
@@ -12591,7 +12648,7 @@ export namespace Prisma {
     memory?: string | null
     time?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     testCases?: TestCaseResultUncheckedCreateNestedManyWithoutSubmissionInput
   }
 
@@ -12608,7 +12665,7 @@ export namespace Prisma {
   export type ProblemSolvedCreateWithoutUserInput = {
     id?: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     problems: ProblemsCreateNestedOneWithoutSolvedByInput
   }
 
@@ -12616,7 +12673,7 @@ export namespace Prisma {
     id?: string
     problemId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemSolvedCreateOrConnectWithoutUserInput = {
@@ -12634,7 +12691,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     problems?: ProblemInPlaylistCreateNestedManyWithoutPlaylistInput
   }
 
@@ -12643,7 +12700,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     problems?: ProblemInPlaylistUncheckedCreateNestedManyWithoutPlaylistInput
   }
 
@@ -12685,13 +12742,14 @@ export namespace Prisma {
     constrains?: StringNullableFilter<"Problems"> | string | null
     examples?: JsonFilter<"Problems">
     hints?: StringNullableFilter<"Problems"> | string | null
-    userId?: StringFilter<"Problems"> | string
+    userId?: StringNullableFilter<"Problems"> | string | null
     difficulty?: EnumDifficultyFilter<"Problems"> | $Enums.Difficulty
+    isDemo?: BoolFilter<"Problems"> | boolean
     testcases?: JsonFilter<"Problems">
     codeSnippets?: JsonFilter<"Problems">
     referenceSolutions?: JsonFilter<"Problems">
     updatedAt?: DateTimeFilter<"Problems"> | Date | string
-    createdAT?: DateTimeFilter<"Problems"> | Date | string
+    createdAt?: DateTimeFilter<"Problems"> | Date | string
   }
 
   export type SubmissionUpsertWithWhereUniqueWithoutUserInput = {
@@ -12727,7 +12785,7 @@ export namespace Prisma {
     memory?: StringNullableFilter<"Submission"> | string | null
     time?: StringNullableFilter<"Submission"> | string | null
     updatedAt?: DateTimeFilter<"Submission"> | Date | string
-    createdAT?: DateTimeFilter<"Submission"> | Date | string
+    createdAt?: DateTimeFilter<"Submission"> | Date | string
   }
 
   export type ProblemSolvedUpsertWithWhereUniqueWithoutUserInput = {
@@ -12754,7 +12812,7 @@ export namespace Prisma {
     userId?: StringFilter<"ProblemSolved"> | string
     problemId?: StringFilter<"ProblemSolved"> | string
     updatedAt?: DateTimeFilter<"ProblemSolved"> | Date | string
-    createdAT?: DateTimeFilter<"ProblemSolved"> | Date | string
+    createdAt?: DateTimeFilter<"ProblemSolved"> | Date | string
   }
 
   export type PlaylistUpsertWithWhereUniqueWithoutUserInput = {
@@ -12782,7 +12840,7 @@ export namespace Prisma {
     userId?: StringFilter<"Playlist"> | string
     description?: StringNullableFilter<"Playlist"> | string | null
     updatedAt?: DateTimeFilter<"Playlist"> | Date | string
-    createdAT?: DateTimeFilter<"Playlist"> | Date | string
+    createdAt?: DateTimeFilter<"Playlist"> | Date | string
   }
 
   export type UserCreateWithoutProblemsInput = {
@@ -12830,7 +12888,7 @@ export namespace Prisma {
     memory?: string | null
     time?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     user: UserCreateNestedOneWithoutSubmissionInput
     testCases?: TestCaseResultCreateNestedManyWithoutSubmissionInput
   }
@@ -12848,7 +12906,7 @@ export namespace Prisma {
     memory?: string | null
     time?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     testCases?: TestCaseResultUncheckedCreateNestedManyWithoutSubmissionInput
   }
 
@@ -12865,7 +12923,7 @@ export namespace Prisma {
   export type ProblemSolvedCreateWithoutProblemsInput = {
     id?: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     user: UserCreateNestedOneWithoutProblemSolvedInput
   }
 
@@ -12873,7 +12931,7 @@ export namespace Prisma {
     id?: string
     userId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemSolvedCreateOrConnectWithoutProblemsInput = {
@@ -12889,7 +12947,7 @@ export namespace Prisma {
   export type ProblemInPlaylistCreateWithoutProblemInput = {
     id?: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     playlist: PlaylistCreateNestedOneWithoutProblemsInput
   }
 
@@ -12897,7 +12955,7 @@ export namespace Prisma {
     id?: string
     playlistId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemInPlaylistCreateOrConnectWithoutProblemInput = {
@@ -13005,7 +13063,7 @@ export namespace Prisma {
     playlistId?: StringFilter<"ProblemInPlaylist"> | string
     problemId?: StringFilter<"ProblemInPlaylist"> | string
     updatedAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
-    createdAT?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
+    createdAt?: DateTimeFilter<"ProblemInPlaylist"> | Date | string
   }
 
   export type UserCreateWithoutSubmissionInput = {
@@ -13051,12 +13109,13 @@ export namespace Prisma {
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
-    user: UserCreateNestedOneWithoutProblemsInput
+    createdAt?: Date | string
+    user?: UserCreateNestedOneWithoutProblemsInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemsInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
   }
@@ -13070,13 +13129,14 @@ export namespace Prisma {
     constrains?: string | null
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
-    userId: string
+    userId?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemsInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
   }
@@ -13098,7 +13158,7 @@ export namespace Prisma {
     testCase: number
     passed: boolean
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type TestCaseResultUncheckedCreateWithoutSubmissionInput = {
@@ -13113,7 +13173,7 @@ export namespace Prisma {
     testCase: number
     passed: boolean
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type TestCaseResultCreateOrConnectWithoutSubmissionInput = {
@@ -13186,12 +13246,13 @@ export namespace Prisma {
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutProblemsNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemsNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
   }
@@ -13205,13 +13266,14 @@ export namespace Prisma {
     constrains?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemsNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
   }
@@ -13248,7 +13310,7 @@ export namespace Prisma {
     testCase?: IntFilter<"TestCaseResult"> | number
     passed?: BoolFilter<"TestCaseResult"> | boolean
     updatedAt?: DateTimeFilter<"TestCaseResult"> | Date | string
-    createdAT?: DateTimeFilter<"TestCaseResult"> | Date | string
+    createdAt?: DateTimeFilter<"TestCaseResult"> | Date | string
   }
 
   export type SubmissionCreateWithoutTestCasesInput = {
@@ -13263,7 +13325,7 @@ export namespace Prisma {
     memory?: string | null
     time?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     user: UserCreateNestedOneWithoutSubmissionInput
     problem: ProblemsCreateNestedOneWithoutSubmissionInput
   }
@@ -13282,7 +13344,7 @@ export namespace Prisma {
     memory?: string | null
     time?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type SubmissionCreateOrConnectWithoutTestCasesInput = {
@@ -13313,7 +13375,7 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSubmissionNestedInput
     problem?: ProblemsUpdateOneRequiredWithoutSubmissionNestedInput
   }
@@ -13332,7 +13394,7 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCreateWithoutProblemSolvedInput = {
@@ -13378,12 +13440,13 @@ export namespace Prisma {
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
-    user: UserCreateNestedOneWithoutProblemsInput
+    createdAt?: Date | string
+    user?: UserCreateNestedOneWithoutProblemsInput
     submission?: SubmissionCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistCreateNestedManyWithoutProblemInput
   }
@@ -13397,13 +13460,14 @@ export namespace Prisma {
     constrains?: string | null
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
-    userId: string
+    userId?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     problemsPlaylists?: ProblemInPlaylistUncheckedCreateNestedManyWithoutProblemInput
   }
@@ -13473,12 +13537,13 @@ export namespace Prisma {
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutProblemsNestedInput
     submission?: SubmissionUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
   }
@@ -13492,13 +13557,14 @@ export namespace Prisma {
     constrains?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
   }
@@ -13506,7 +13572,7 @@ export namespace Prisma {
   export type ProblemInPlaylistCreateWithoutPlaylistInput = {
     id?: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     problem: ProblemsCreateNestedOneWithoutProblemsPlaylistsInput
   }
 
@@ -13514,7 +13580,7 @@ export namespace Prisma {
     id?: string
     problemId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemInPlaylistCreateOrConnectWithoutPlaylistInput = {
@@ -13620,7 +13686,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     user: UserCreateNestedOneWithoutPlaylistInput
   }
 
@@ -13630,7 +13696,7 @@ export namespace Prisma {
     userId: string
     description?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type PlaylistCreateOrConnectWithoutProblemsInput = {
@@ -13648,12 +13714,13 @@ export namespace Prisma {
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
-    user: UserCreateNestedOneWithoutProblemsInput
+    createdAt?: Date | string
+    user?: UserCreateNestedOneWithoutProblemsInput
     submission?: SubmissionCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedCreateNestedManyWithoutProblemsInput
   }
@@ -13667,13 +13734,14 @@ export namespace Prisma {
     constrains?: string | null
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
-    userId: string
+    userId?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
     submission?: SubmissionUncheckedCreateNestedManyWithoutProblemInput
     solvedBy?: ProblemSolvedUncheckedCreateNestedManyWithoutProblemsInput
   }
@@ -13699,7 +13767,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutPlaylistNestedInput
   }
 
@@ -13709,7 +13777,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemsUpsertWithoutProblemsPlaylistsInput = {
@@ -13733,12 +13801,13 @@ export namespace Prisma {
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutProblemsNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutProblemsNestedInput
     submission?: SubmissionUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemsNestedInput
   }
@@ -13752,13 +13821,14 @@ export namespace Prisma {
     constrains?: NullableStringFieldUpdateOperationsInput | string | null
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
-    userId?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemsNestedInput
   }
@@ -13773,11 +13843,12 @@ export namespace Prisma {
     examples: JsonNullValueInput | InputJsonValue
     hints?: string | null
     difficulty?: $Enums.Difficulty
+    isDemo?: boolean
     testcases: JsonNullValueInput | InputJsonValue
     codeSnippets: JsonNullValueInput | InputJsonValue
     referenceSolutions: JsonNullValueInput | InputJsonValue
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type SubmissionCreateManyUserInput = {
@@ -13793,14 +13864,14 @@ export namespace Prisma {
     memory?: string | null
     time?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemSolvedCreateManyUserInput = {
     id?: string
     problemId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type PlaylistCreateManyUserInput = {
@@ -13808,7 +13879,7 @@ export namespace Prisma {
     name: string
     description?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemsUpdateWithoutUserInput = {
@@ -13821,11 +13892,12 @@ export namespace Prisma {
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUpdateManyWithoutProblemsNestedInput
     problemsPlaylists?: ProblemInPlaylistUpdateManyWithoutProblemNestedInput
@@ -13841,11 +13913,12 @@ export namespace Prisma {
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submission?: SubmissionUncheckedUpdateManyWithoutProblemNestedInput
     solvedBy?: ProblemSolvedUncheckedUpdateManyWithoutProblemsNestedInput
     problemsPlaylists?: ProblemInPlaylistUncheckedUpdateManyWithoutProblemNestedInput
@@ -13861,11 +13934,12 @@ export namespace Prisma {
     examples?: JsonNullValueInput | InputJsonValue
     hints?: NullableStringFieldUpdateOperationsInput | string | null
     difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+    isDemo?: BoolFieldUpdateOperationsInput | boolean
     testcases?: JsonNullValueInput | InputJsonValue
     codeSnippets?: JsonNullValueInput | InputJsonValue
     referenceSolutions?: JsonNullValueInput | InputJsonValue
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SubmissionUpdateWithoutUserInput = {
@@ -13880,7 +13954,7 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problem?: ProblemsUpdateOneRequiredWithoutSubmissionNestedInput
     testCases?: TestCaseResultUpdateManyWithoutSubmissionNestedInput
   }
@@ -13898,7 +13972,7 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     testCases?: TestCaseResultUncheckedUpdateManyWithoutSubmissionNestedInput
   }
 
@@ -13915,13 +13989,13 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemSolvedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemsUpdateOneRequiredWithoutSolvedByNestedInput
   }
 
@@ -13929,14 +14003,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemSolvedUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PlaylistUpdateWithoutUserInput = {
@@ -13944,7 +14018,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemInPlaylistUpdateManyWithoutPlaylistNestedInput
   }
 
@@ -13953,7 +14027,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemInPlaylistUncheckedUpdateManyWithoutPlaylistNestedInput
   }
 
@@ -13962,7 +14036,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SubmissionCreateManyProblemInput = {
@@ -13978,21 +14052,21 @@ export namespace Prisma {
     memory?: string | null
     time?: string | null
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemSolvedCreateManyProblemsInput = {
     id?: string
     userId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemInPlaylistCreateManyProblemInput = {
     id?: string
     playlistId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type SubmissionUpdateWithoutProblemInput = {
@@ -14007,7 +14081,7 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSubmissionNestedInput
     testCases?: TestCaseResultUpdateManyWithoutSubmissionNestedInput
   }
@@ -14025,7 +14099,7 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     testCases?: TestCaseResultUncheckedUpdateManyWithoutSubmissionNestedInput
   }
 
@@ -14042,13 +14116,13 @@ export namespace Prisma {
     memory?: NullableStringFieldUpdateOperationsInput | string | null
     time?: NullableStringFieldUpdateOperationsInput | string | null
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemSolvedUpdateWithoutProblemsInput = {
     id?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProblemSolvedNestedInput
   }
 
@@ -14056,20 +14130,20 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemSolvedUncheckedUpdateManyWithoutProblemsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemInPlaylistUpdateWithoutProblemInput = {
     id?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     playlist?: PlaylistUpdateOneRequiredWithoutProblemsNestedInput
   }
 
@@ -14077,14 +14151,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     playlistId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemInPlaylistUncheckedUpdateManyWithoutProblemInput = {
     id?: StringFieldUpdateOperationsInput | string
     playlistId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestCaseResultCreateManySubmissionInput = {
@@ -14099,7 +14173,7 @@ export namespace Prisma {
     testCase: number
     passed: boolean
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type TestCaseResultUpdateWithoutSubmissionInput = {
@@ -14114,7 +14188,7 @@ export namespace Prisma {
     testCase?: IntFieldUpdateOperationsInput | number
     passed?: BoolFieldUpdateOperationsInput | boolean
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestCaseResultUncheckedUpdateWithoutSubmissionInput = {
@@ -14129,7 +14203,7 @@ export namespace Prisma {
     testCase?: IntFieldUpdateOperationsInput | number
     passed?: BoolFieldUpdateOperationsInput | boolean
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestCaseResultUncheckedUpdateManyWithoutSubmissionInput = {
@@ -14144,20 +14218,20 @@ export namespace Prisma {
     testCase?: IntFieldUpdateOperationsInput | number
     passed?: BoolFieldUpdateOperationsInput | boolean
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemInPlaylistCreateManyPlaylistInput = {
     id?: string
     problemId: string
     updatedAt?: Date | string
-    createdAT?: Date | string
+    createdAt?: Date | string
   }
 
   export type ProblemInPlaylistUpdateWithoutPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problem?: ProblemsUpdateOneRequiredWithoutProblemsPlaylistsNestedInput
   }
 
@@ -14165,14 +14239,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProblemInPlaylistUncheckedUpdateManyWithoutPlaylistInput = {
     id?: StringFieldUpdateOperationsInput | string
     problemId?: StringFieldUpdateOperationsInput | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAT?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

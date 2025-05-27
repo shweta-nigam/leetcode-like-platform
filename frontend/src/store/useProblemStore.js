@@ -9,42 +9,20 @@ export const useProblemStore = create((set) => ({
   isProblemsLoading: false,
   isProblemLoading: false,
 
+  getAllProblems: async () => {
+    try {
+      set({ isProblemsLoading: true });
 
-  // o-code
-  // getAllProblems: async () => {
-  //   try {
-  //     set({ isProblemsLoading: true });
+      const res = await axiosInstance.get("/problems/get-all-problems");
 
-  //     const res = await axiosInstance.get("/problems/get-all-problems");
-
-  //     set({ problems: res.data.problems });
-  //   } catch (error) {
-  //     console.log("Error getting all problems", error);
-  //     toast.error("Error in getting problems");
-  //   } finally {
-  //     set({ isProblemsLoading: false });
-  //   }
-  // },
-
-
-getAllProblems: async () => {
-  try {
-    set({ isProblemsLoading: true });
-
-    const res = await axiosInstance.get("/problems/get-all-problems");
-
-    console.log("✅ Problems fetched from backend:", res.data);
-
-    set({ problems: res.data.data || [] });
-  } catch (error) {
-    console.log("❌ Error getting all problems", error);
-    toast.error("Error in getting problems");
-  } finally {
-    set({ isProblemsLoading: false });
-  }
-},
-
-
+      set({ problems: res.data.data });
+    } catch (error) {
+      console.log("Error getting all problems", error);
+      toast.error("Error in getting problems");
+    } finally {
+      set({ isProblemsLoading: false });
+    }
+  },
 
   getProblemById: async (id) => {
     try {
@@ -52,7 +30,8 @@ getAllProblems: async () => {
 
       const res = await axiosInstance.get(`/problems/get-problem/${id}`);
 
-      set({ problem: res.data.problem });
+      set({ problem: res.data.data });
+    
       toast.success(res.data.message);
     } catch (error) {
       console.log("Error getting all problems", error);
@@ -66,7 +45,7 @@ getAllProblems: async () => {
     try {
       const res = await axiosInstance.get("/problems/get-solved-problem");
 
-      set({ solvedProblems: res.data.problems });
+      set({ solvedProblems: res.data.data });
     } catch (error) {
       console.log("Error getting solved problems", error);
       toast.error("Error getting solved problems");

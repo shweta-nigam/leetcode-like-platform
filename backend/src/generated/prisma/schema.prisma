@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -50,17 +44,19 @@ model Problems {
   constrains  String?
   examples    Json
   hints       String?
-  userId      String
+  userId      String?
   difficulty  Difficulty @default(HARD)
+
+  isDemo Boolean @default(false)
 
   testcases          Json // secret inputs and expected outputs - Teacher’s answer sheet
   codeSnippets       Json // Pre-filled boilerplate code  - The Starter Code
   referenceSolutions Json //Answer key   // The correct solution code written by you (or admins), in multiple languages.
 
   updatedAt DateTime @updatedAt
-  createdAT DateTime @default(now())
+  createdAt DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   submission        Submission[]
   solvedBy          ProblemSolved[]
@@ -82,7 +78,7 @@ model Submission {
   time          String? // why not DateTime ?
 
   updatedAt DateTime @updatedAt
-  createdAT DateTime @default(now())
+  createdAt DateTime @default(now())
 
   user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   problem Problems @relation(fields: [problemId], references: [id], onDelete: Cascade)
@@ -104,7 +100,7 @@ model TestCaseResult {
   passed        Boolean
 
   updatedAt DateTime @updatedAt
-  createdAT DateTime @default(now())
+  createdAt DateTime @default(now())
 
   submission Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
 
@@ -117,7 +113,7 @@ model ProblemSolved {
   problemId String
 
   updatedAt DateTime @updatedAt
-  createdAT DateTime @default(now())
+  createdAt DateTime @default(now())
 
   user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   problems Problems @relation(fields: [problemId], references: [id], onDelete: Cascade)
@@ -132,7 +128,7 @@ model Playlist {
   description String?
 
   updatedAt DateTime @updatedAt
-  createdAT DateTime @default(now())
+  createdAt DateTime @default(now())
 
   problems ProblemInPlaylist[]
 
@@ -147,7 +143,7 @@ model ProblemInPlaylist {
   problemId  String
 
   updatedAt DateTime @updatedAt
-  createdAT DateTime @default(now())
+  createdAt DateTime @default(now())
 
   playlist Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
   problem  Problems @relation(fields: [problemId], references: [id], onDelete: Cascade)

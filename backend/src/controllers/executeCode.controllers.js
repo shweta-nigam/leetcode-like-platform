@@ -11,10 +11,15 @@ export const executeCode = async (req, res) => {
   const { source_code, language_id, stdin, expected_outputs, problemId } =
     req.body;
 
-  const userId = req.body.user; // from authMiddleware  --  confirm it
+  // const userId = req.body.user; 
+  const userId = req.user.id;
+
+
+if (!req.user || !req.user.id) {
+  throw new ApiError(401, "Unauthorized - user not found");
+}
 
   try {
-    //1.validate test cases
     if (
       !Array.isArray(stdin) ||
       stdin.length === 0 ||
@@ -24,24 +29,19 @@ export const executeCode = async (req, res) => {
       throw new ApiError(400, "Invalid or missing test case ");
     }
 
-    //2. prepare each test cases for judge0 batch submission
-
     const submissions = stdin.map((input) => ({
       source_code,
       language_id,
       stdin: input,
     }));
-    //3. send the submissions to judge0
     const submitResponse = await submitBatch(submissions);
     const tokens = await submitResponse.map((res) => res.token);
-
-    //4. polling for all submitted test cases result
     const results = await pollBatchResults(tokens);
 
     console.log("results of executeCode ---------");
     console.log(results);
 
-    // Analyze results of test cases
+ 
     let allPassed = true;
     const detailedResults = results.map((result, i) => {
       const stdout = result.stdout?.trim();
@@ -56,21 +56,15 @@ export const executeCode = async (req, res) => {
         stdout,
         expected: expected_output,
         stderr: result.stderr || null,
-        compile_output: result.compile_output || null, // why null here
+        compile_output: result.compile_output || null, 
         status: result.status.description,
-        memory: result.memory ? `${result.memory} KB` : undefined, // why undefined here then
+        memory: result.memory ? `${result.memory} KB` : undefined, 
         time: result.time ? `${result.time} s` : undefined,
       };
-      // console.log(`Testcase  #${i+1}`)
-      // console.log(`Input for test case #${i+1}: ${stdin[i]}`)
-      // console.log(`Expected output for testcase ${i+1}: ${expected_output}`)
-      // console.log(`Actual output for testcase ${i+1}: ${stdout}`)
-
-      // console.log(`Matched testcase #${i+1}: ${passed}`)
     });
     console.log(detailedResults);
 
-    // store submission summary
+
     const submission = await db.submission.create({
       data: {
         userId,
@@ -95,7 +89,6 @@ export const executeCode = async (req, res) => {
       },
     });
 
-    //   If all passed =  true, mark problem as solved for the current user
 
     if (allPassed) {
       await db.problemSolved.upsert({
@@ -113,7 +106,6 @@ export const executeCode = async (req, res) => {
       });
     }
 
-    // 8. Save individual test case results using detailedResults
 
     const testCaseResults = detailedResults.map((result)=>({
         submissionId: submission.id,

@@ -21,13 +21,9 @@ export const createProblem = async (req, res) => {
     testcases,
     codeSnippets,
     referenceSolutions,
+    isDemo,
   } = req.body;
 
-  //2. check admin (rbac - roll based access)
-  // if (req.body.user !== "ADMIN") {
-  //   // how accessing this ? req.body.user
-  //   throw new ApiError(203, "Access denied - admin only");
-  // }
 
   try {
     //3. loop through each problems
@@ -39,7 +35,7 @@ export const createProblem = async (req, res) => {
       }
 
       const submissions = testcases.map(({ input, output }) => ({
-        source_code: solutionCode, // they’re part of Judge0’s API schema. Using( _ )underscore , otherwise judge0 wont recognize it.
+        source_code: solutionCode, 
         language_id: languageId,
         stdin: input,
         expected_output: output,
@@ -51,13 +47,9 @@ export const createProblem = async (req, res) => {
 
       const results = await pollBatchResults(tokens);
 
-      // submitBatch → Sends multiple solutions to Judge0.
-      // submissionResults → Returns an array of submission tokens.
-      // tokens → Extracts just the tokens from each result.
-      // pollBatchResults → Waits until Judge0 finishes executing each submission, and returns results (output, memory, etc).
 
       for (let i = 0; i < results.length; i++) {
-        const result = results[i]; // Square brackets are used to access elements of an array by index. // Because arrays in JavaScript are just objects with numeric keys.
+        const result = results[i]; 
         console.log("Results_______-------", result);
 
         if (result.status.id !== 3) {
@@ -66,13 +58,10 @@ export const createProblem = async (req, res) => {
             `Testcase ${i + 1} failed for language ${language}`
           );
         }
-
-        //         if (result.status.id !== 3) {
-        //   console.error(`Language: ${language}, Token: ${token}, Error: ${status.description}`);
-        //   throw new ApiError(`Testcase ${i + 1} failed for language ${language}`);
-        // }
       }
     }
+
+
     const newProblem = await db.problems.create({
       data: {
         title,
@@ -86,7 +75,8 @@ export const createProblem = async (req, res) => {
         testcases,
         codeSnippets,
         referenceSolutions,
-        userId: req.user.id, // used auth middleware to make it work// why?  => The request has the logged-in user. You're saving who created the problem.
+        userId: req.user.id, 
+        isDemo: isDemo || false,
       },
     });
 
@@ -198,6 +188,9 @@ export const getAllProblems = async (req, res) => {
             userId: req.user.id,
           },
         },
+      },
+       orderBy: {
+        createdAt: "desc", 
       },
     });
     if (!problems) {

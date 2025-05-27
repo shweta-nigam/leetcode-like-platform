@@ -39,21 +39,24 @@ export const useAuthStore = create((set) => ({
     }
   },
 
-  login: async (data) => {
-    set({ isLoggingIn: true });
-    try {
-      const res = await axiosInstance.post("/auth/login", data);
+ login: async (data) => {
+  set({ isLoggingIn: true });
+  try {
+    const res = await axiosInstance.post("/auth/login", data);
 
-      set({ authUser: res.data.user });
+    set({ authUser: res.data.user });  // Set immediately for quick UI update
 
-      toast.success(res.data.message);
-    } catch (error) {
-      console.log("Error logging in", error);
-      toast.error("Error logging in");
-    } finally {
-      set({ isLoggingIn: false });
-    }
-  },
+    await useAuthStore.getState().checkAuth(); // Ensure backend confirms session
+
+    toast.success(res.data.message);
+  } catch (error) {
+    console.log("Error logging in", error);
+    toast.error("Error logging in");
+  } finally {
+    set({ isLoggingIn: false });
+  }
+},
+
 
   logout: async () => {
     try {
