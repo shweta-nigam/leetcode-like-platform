@@ -21,7 +21,7 @@ import { useAuthStore } from '../store/useAuthStore';
 
 const LoginSchema = z.object({
   email:z.string().email("Enter a valid email"),
-  password:z.string().min(6 , "Password must be atleast of 6 characters"),
+  password:z.string().min(6 , "Password must be at least of 6 characters"),
 
 })
 
@@ -40,18 +40,11 @@ const LoginPage = () => {
     resolver:zodResolver(LoginSchema)
   })
 
-  // const onSubmit = async (data)=>{
-  //   try {
-  //     await login(data)
-      
-  //   } catch (error) {
-  //     console.error("Signup failed" , error)
-  //   }
-  // }
+  
   const onSubmit = async (data) => {
   try {
     await login(data);
-    navigate("/"); // ✅ Redirect to homepage
+    navigate("/");
   } catch (error) {
     console.error("Login failed", error);
   }

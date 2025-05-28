@@ -34,5 +34,5 @@ console.log("Server is running on port 8080!")
 })
 
 app.get("/", (req, res) => {
-  res.send("Leetcode Clone Backend is Running!");
+  res.send("lillyCode Backend is Running!");
 });
