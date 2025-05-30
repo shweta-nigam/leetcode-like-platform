@@ -49,9 +49,9 @@ model Problems {
 
   isDemo Boolean @default(false)
 
-  testcases          Json // secret inputs and expected outputs - Teacher’s answer sheet
-  codeSnippets       Json // Pre-filled boilerplate code  - The Starter Code
-  referenceSolutions Json //Answer key   // The correct solution code written by you (or admins), in multiple languages.
+  testcases          Json
+  codeSnippets       Json
+  referenceSolutions Json
 
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
